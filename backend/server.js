@@ -19,6 +19,14 @@ app.use("/sach", sachRoutes);
 const muonSachRoutes = require("./routes/muonsach.route");
 app.use("/muonsach", muonSachRoutes);
 
+// Routes cho nhanvien
+const nhanvienRoutes = require("./routes/nhanvien.route");
+app.use("/nhanvien", nhanvienRoutes);
+
+// Routes cho nha xuat ban
+const nxbRoutes = require("./routes/nxb.route");
+app.use("/nxb", nxbRoutes);
+
 // Lang nghe va chay chuong trinh
 const PORT = process.env.PORT || 3000;
 
