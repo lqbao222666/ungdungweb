@@ -8,5 +8,6 @@ router.get("/:id", controller.getDocGiaById);
 router.put("/:id", controller.updateDocGia);
 router.delete("/:id", controller.deleteDocGia);
 router.delete("/", controller.deleteAllDocGia);
+router.post("/login", controller.loginDocGia);
 
 module.exports = router;

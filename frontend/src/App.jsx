@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AdminLayout from "./layouts/AdminLayout";
+import HomeLayout from "./layouts/HomeLayout";
+import AdminLogin from "./pages/AdminLogin";
+import HomePageAdmin from "./pages/HomePageAdmin";
+import ProductList from "./pages/ProductList";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
+import UserList from "./pages/UserList";
+import HomePage from "./pages/HomePage";
+// Nguoi dung
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Routes>
+        {/* Admin login không dùng layout */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        {/* Admin layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="home" element={<HomePageAdmin />} />
+          <Route path="list-products" element={<ProductList />} />
+          <Route path="add-product" element={<AddProduct />} />
+          <Route path="edit-product/:id" element={<EditProduct />} />
+          <Route path="list-users" element={<UserList />} />
+        </Route>
+
+        {/* Trang chính dành cho người dùng */}
+        <Route path="/" element={<HomeLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        {/* Trang đăng nhập, đăng ký */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

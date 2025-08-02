@@ -3,9 +3,9 @@ const db = require("../config/db.js");
 const DocGiaService = {
   create: (data, callback) => {
     const sql = `
-      INSERT INTO DocGia (HoLot, Ten, NgaySinh, Phai, DiaChi, DienThoai)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `;
+    INSERT INTO DocGia (HoLot, Ten, NgaySinh, Phai, DiaChi, DienThoai, Username, Password)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
     const values = [
       data.HoLot,
       data.Ten,
@@ -13,6 +13,8 @@ const DocGiaService = {
       data.Phai,
       data.DiaChi,
       data.DienThoai,
+      data.Username,
+      data.Password, // Bạn nên mã hóa mật khẩu trước khi lưu
     ];
     db.query(sql, values, (err, result) => {
       if (err) return callback(err);

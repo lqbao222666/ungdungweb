@@ -3,8 +3,8 @@ const db = require("../config/db.js");
 const SachService = {
   create: (data, callback) => {
     const sql = `
-      INSERT INTO Sach (TenSach, DonGia, SoQuyen, NamXuatBan, MaNXB, TacGia)
-      VALUES (?, ?, ?, ?, ?, ?)
+      INSERT INTO sach (TenSach, DonGia, SoQuyen, NamXuatBan, MaNXB, TacGia, HinhAnh)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
     const values = [
       data.TenSach,
@@ -13,7 +13,9 @@ const SachService = {
       data.NamXuatBan,
       data.MaNXB,
       data.TacGia,
+      data.HinhAnh || null,
     ];
+
     db.query(sql, values, (err, result) => {
       if (err) return callback(err);
       return callback(null, { id: result.insertId, ...data });
@@ -36,7 +38,7 @@ const SachService = {
 
   update: (id, data, callback) => {
     const sql = `
-      UPDATE Sach SET TenSach=?, DonGia=?, SoQuyen=?, NamXuatBan=?, MaNXB=?, TacGia=?
+      UPDATE Sach SET TenSach=?, DonGia=?, SoQuyen=?, NamXuatBan=?, MaNXB=?, TacGia=?, HinhAnh=?
       WHERE MaSach=?
     `;
     const values = [
@@ -46,8 +48,10 @@ const SachService = {
       data.NamXuatBan,
       data.MaNXB,
       data.TacGia,
+      data.HinhAnh || null,
       id,
     ];
+
     db.query(sql, values, (err, result) => {
       if (err) return callback(err);
       return callback(null, result);

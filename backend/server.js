@@ -1,5 +1,5 @@
 const express = require("express");
-const cors = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const db = require("./config/db.js");
@@ -15,6 +15,8 @@ app.use("/docgia", docgiaRoutes);
 // Routes sach
 const sachRoutes = require("./routes/sach.route.js");
 app.use("/sach", sachRoutes);
+app.use("/uploads", express.static("uploads"));
+
 // Routes cho muon sach
 const muonSachRoutes = require("./routes/muonsach.route");
 app.use("/muonsach", muonSachRoutes);
