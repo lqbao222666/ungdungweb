@@ -4,6 +4,7 @@ const controller = require("../controllers/docgia.controller.js");
 
 router.post("/", controller.createDocGia);
 router.get("/", controller.getAllDocGia);
+router.get("/username/:username", controller.getDocGiaByUsername);
 router.get("/:id", controller.getDocGiaById);
 router.put("/:id", controller.updateDocGia);
 router.delete("/:id", controller.deleteDocGia);

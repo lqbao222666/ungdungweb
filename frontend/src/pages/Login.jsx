@@ -12,8 +12,13 @@ function Login() {
     e.preventDefault();
     try {
       const res = await axios.post("http://localhost:3000/docgia/login", form);
+      const user = res.data.user;
+
+      localStorage.setItem("user", JSON.stringify(user));
+
       alert("Đăng nhập thành công!");
-      console.log("User:", res.data.user);
+
+      window.location.href = "/";
     } catch (err) {
       alert("Đăng nhập thất bại!");
       console.error(err);
@@ -22,7 +27,7 @@ function Login() {
 
   return (
     <div className="container mt-5" style={{ maxWidth: 500 }}>
-      <h3 className="text-center mb-4">🔐 Đăng nhập</h3>
+      <h3 className="text-center mb-4">Đăng nhập</h3>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label>Tên đăng nhập</label>

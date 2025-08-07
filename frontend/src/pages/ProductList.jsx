@@ -11,7 +11,7 @@ function ProductList() {
       const res = await axios.get("http://localhost:3000/sach");
       setProducts(res.data);
     } catch (err) {
-      console.error("❌ Lỗi khi lấy sản phẩm:", err);
+      console.error("Lỗi khi lấy sản phẩm:", err);
     }
   };
 
@@ -30,7 +30,7 @@ function ProductList() {
         await axios.delete(`http://localhost:3000/sach/${maSach}`);
         setProducts(products.filter((sp) => sp.MaSach !== maSach));
       } catch (err) {
-        alert("❌ Không thể xóa sản phẩm!");
+        alert("Không thể xóa sản phẩm!");
         console.error(err);
       }
     }
@@ -40,20 +40,19 @@ function ProductList() {
     <div>
       <h3 className="mb-3">Danh sách sản phẩm</h3>
 
-      {/* 🔍 Ô tìm kiếm */}
       <div className="row mb-3">
         <div className="col-md-6">
           <input
             type="text"
             className="form-control"
-            placeholder="🔍 Tìm theo tên sách..."
+            placeholder="Tìm theo tên sách..."
             value={keyword}
             onChange={(e) => setKeyword(e.target.value)}
           />
         </div>
         <div className="col-md-6 text-end">
           <Link to="/admin/add-product" className="btn btn-success">
-            ➕ Thêm sản phẩm
+            Thêm sản phẩm
           </Link>
         </div>
       </div>
@@ -95,13 +94,13 @@ function ProductList() {
                   to={`/admin/edit-product/${sp.MaSach}`}
                   className="btn btn-warning btn-sm me-2"
                 >
-                  ✏️ Sửa
+                  Sửa
                 </Link>
                 <button
                   onClick={() => handleDelete(sp.MaSach)}
                   className="btn btn-danger btn-sm"
                 >
-                  🗑️ Xóa
+                  Xóa
                 </button>
               </td>
             </tr>

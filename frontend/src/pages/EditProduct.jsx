@@ -21,7 +21,7 @@ function EditProduct() {
     axios
       .get(`http://localhost:3000/sach/${id}`)
       .then((res) => setForm(res.data))
-      .catch((err) => console.error("❌ Lỗi khi tải dữ liệu sách:", err));
+      .catch((err) => console.error("Lỗi khi tải dữ liệu sách:", err));
   }, [id]);
 
   const handleChange = (e) => {
@@ -43,10 +43,10 @@ function EditProduct() {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
-      alert("✅ Cập nhật thành công!");
+      alert("Cập nhật thành công!");
       navigate("/admin/list-products");
     } catch (err) {
-      console.error("❌ Lỗi khi cập nhật sách:", err);
+      console.error("Lỗi khi cập nhật sách:", err);
       alert("Cập nhật thất bại!");
     }
   };

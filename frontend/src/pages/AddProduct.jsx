@@ -35,7 +35,7 @@ function AddProduct() {
           "Content-Type": "multipart/form-data",
         },
       });
-      alert("✅ Thêm sách thành công!");
+      alert("Thêm sách thành công!");
       setProduct({
         TenSach: "",
         DonGia: "",
@@ -46,7 +46,7 @@ function AddProduct() {
       });
       setHinhAnh(null);
     } catch (err) {
-      console.error("❌ Lỗi:", err);
+      console.error("Lỗi:", err);
       alert("Thêm sách thất bại!");
     }
   };

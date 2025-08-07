@@ -8,10 +8,9 @@ function UserList() {
     axios
       .get("http://localhost:3000/docgia")
       .then((res) => setUsers(res.data))
-      .catch((err) => console.error("❌ Lỗi khi lấy người dùng:", err));
+      .catch((err) => console.error("Lỗi khi lấy người dùng:", err));
   }, []);
 
-  // Hàm format ngày từ ISO -> dd/mm/yyyy
   const formatDate = (isoString) => {
     const date = new Date(isoString);
     return date.toLocaleDateString("vi-VN");

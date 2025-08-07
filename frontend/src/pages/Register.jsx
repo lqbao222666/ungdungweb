@@ -22,7 +22,7 @@ function Register() {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/docgia", form);
-      alert("✅ Đăng ký thành công!");
+      alert("Đăng ký thành công!");
       setForm({
         HoLot: "",
         Ten: "",
@@ -34,14 +34,14 @@ function Register() {
         Password: "",
       });
     } catch (err) {
-      alert("❌ Đăng ký thất bại!");
+      alert("Đăng ký thất bại!");
       console.error(err);
     }
   };
 
   return (
     <div className="container mt-5" style={{ maxWidth: 600 }}>
-      <h3 className="text-center mb-4">📝 Đăng ký</h3>
+      <h3 className="text-center mb-4">Đăng ký</h3>
       <form onSubmit={handleSubmit}>
         <div className="row g-3">
           <div className="col-md-6">
