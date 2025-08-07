@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useCart } from "../context/CartContext";
+import { Link } from "react-router-dom"; // 👉 Thêm dòng này
 
 function HomePage() {
   const [products, setProducts] = useState([]);
@@ -32,15 +33,27 @@ function HomePage() {
         {products.map((sp) => (
           <div key={sp.MaSach} className="col-md-4 mb-4">
             <div className="card h-100 shadow">
-              <img
-                src={`http://localhost:3000/uploads/${sp.HinhAnh}`}
-                className="card-img-top"
-                alt={sp.TenSach}
-                height="250"
-                style={{ objectFit: "cover" }}
-              />
+              {/* 👉 Bọc ảnh trong Link */}
+              <Link to={`/sach/${sp.MaSach}`}>
+                <img
+                  src={`http://localhost:3000/uploads/${sp.HinhAnh}`}
+                  className="card-img-top"
+                  alt={sp.TenSach}
+                  height="250"
+                  style={{ objectFit: "cover" }}
+                />
+              </Link>
+
               <div className="card-body">
-                <h5 className="card-title">{sp.TenSach}</h5>
+                {/* 👉 Bọc tên sách trong Link */}
+                <h5 className="card-title">
+                  <Link
+                    to={`/sach/${sp.MaSach}`}
+                    className="text-decoration-none"
+                  >
+                    {sp.TenSach}
+                  </Link>
+                </h5>
                 <p className="card-text">
                   Giá: {Number(sp.DonGia).toLocaleString()}₫
                 </p>
@@ -56,7 +69,7 @@ function HomePage() {
                     className="btn btn-primary"
                     onClick={() => handleAddToCart(sp)}
                   >
-                    🛒 Thêm vào giỏ
+                    Thêm vào giỏ
                   </button>
                 </div>
               </div>

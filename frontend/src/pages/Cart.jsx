@@ -15,7 +15,7 @@ function Cart() {
 
   return (
     <div className="container mt-4">
-      <h3 className="mb-4">🛒 Giỏ hàng</h3>
+      <h3 className="mb-4">Giỏ hàng</h3>
 
       {/* Nếu chưa đặt */}
       {cart.length > 0 && (
@@ -61,7 +61,7 @@ function Cart() {
           </table>
 
           <h5 className="text-end">
-            🧾 Tổng tiền:{" "}
+            Tổng tiền:{" "}
             <span className="text-danger">{total.toLocaleString()}₫</span>
           </h5>
 
@@ -82,7 +82,7 @@ function Cart() {
       {/* Danh sách đơn hàng đã đặt */}
       {orders.length > 0 && (
         <div className="mt-5">
-          <h4>📦 Đơn hàng đã đặt</h4>
+          <h4>Đơn hàng đã đặt</h4>
           {orders.map((order, index) => (
             <div className="card mt-3" key={index}>
               <div className="card-header d-flex justify-content-between align-items-center">

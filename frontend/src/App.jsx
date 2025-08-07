@@ -9,6 +9,7 @@ import EditProduct from "./pages/EditProduct";
 import UserList from "./pages/UserList";
 import HomePage from "./pages/HomePage";
 import Cart from "./pages/Cart";
+import ProductDetail from "./pages/ProductDetail";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import DetailUser from "./pages/DetailUser";
@@ -33,6 +34,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="cart" element={<Cart />} />
         <Route path="detail-user" element={<DetailUser />} />
+        <Route path="/sach/:id" element={<ProductDetail />} />
       </Route>
 
       {/* Đăng nhập, đăng ký */}
